@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <nav-bar></nav-bar>
+    <nav-bar><div slot="center">购物街</div></nav-bar>
   </div>
 </template>
 
@@ -20,4 +20,8 @@ export default{
 </script>
 
 <style scoped>
+  #home{
+    background-color: var(--color-tint); 
+    color: #ffffff
+  }
 </style>
