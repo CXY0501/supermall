@@ -16,6 +16,8 @@ export default {
 }
 </script>
 
+// test test test
+
 <style>
   @import "./assets/css/base.css"
 </style>
