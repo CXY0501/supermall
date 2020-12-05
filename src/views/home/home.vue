@@ -1,17 +1,20 @@
 <template>
   <div id="home">
     <div id="navBar"><nav-bar><div slot="center">购物街</div></nav-bar></div>
-    <home-swiper :banners="banners"></home-swiper>
-    <home-recommend :recommends="recommends"/>
-    <feature-view/>
-    <tab-control :titles="['流行','新款','精选']" class="tabControl" @tabclick="tabClick"/>
-    <goods-list :goods="goods['pop'].list"/>
+    <scroll class="homecontent">
+      <home-swiper :banners="banners"></home-swiper>
+      <home-recommend :recommends="recommends"/>
+      <feature-view/>
+      <tab-control :titles="['流行','新款','精选']" class="tabControl" @tabClick="tabClick"/>
+      <goods-list :goods="showgoods"/>
+    </scroll>
   </div>
 
 </template>
 
 <script>
 import NavBar from '../../components/common/navbar/NavBar'
+import scroll from '../../components/common/scroll/scroll'
 import tabControl from '../../components/content/tabControl/tabControl'
 import goodsList from '../../components/content/goods/goodsList'
 
@@ -21,18 +24,21 @@ import featureView from './childcomps/featureView'
 
 import {getHomeMultidata,getHomeGoods} from '../../network/home'
 import GoodsList from '../../components/content/goods/goodsList.vue'
+import Scroll from '../../components/common/scroll/scroll.vue'
 
 
 export default{
   name:'home',
   components:{
     NavBar,
+    Scroll,
     tabControl,
     goodsList,
     HomeSwiper,
     HomeRecommend,
     featureView,
-    GoodsList
+    GoodsList,
+    Scroll
   },
   data(){
     return{
@@ -43,6 +49,12 @@ export default{
         'new':{page:0, list:[]},
         'sell':{page:0, list:[]},
       },
+      currentType: 'pop'
+    }
+  },
+  computed:{
+    showgoods(){
+      return this.goods[this.currentType].list
     }
   },
   created(){
@@ -54,9 +66,17 @@ export default{
   methods:{
     // 事件监听相关
     tabClick(index){
-      const i=index
-      console.log(i)
-      console.log('click')
+      switch(index){
+        case 0:
+          this.currentType = 'pop'
+          break
+        case 1:
+          this.currentType = 'new'
+          break
+        case 2:
+          this.currentType = 'sell'
+          break
+      }
     },
 
     // 网络请求相关
@@ -81,6 +101,8 @@ export default{
 <style scoped>
   #home{
     padding-top: 44px;
+    height: 100vh;
+    position: relative;
   }
   #navBar{
     background-color: var(--color-tint); 
@@ -94,5 +116,14 @@ export default{
   .tabControl{
     position: sticky;
     top:44px
+  }
+  .homecontent{
+    /* overflow-y: scroll; */
+    overflow: hidden;
+    position:absolute;
+    top: 44px;
+    bottom: 49px;
+    left: 0;
+    right: 0;
   }
 </style>
