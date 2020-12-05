@@ -1,7 +1,8 @@
 module.exports = {
+    lintOnSave: false,
     configureWebpack:{
         resolve:{
-            extension:[],
+            extensions:[],
             alias:{
                 'assets':'@/assets',
                 'common':'@/common',
