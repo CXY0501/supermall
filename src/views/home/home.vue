@@ -1,14 +1,14 @@
 <template>
   <div id="home">
     <div id="navBar"><nav-bar><div slot="center">购物街</div></nav-bar></div>
-    <scroll class="homecontent">
+    <scroll class="homecontent" ref="bscroll">
       <home-swiper :banners="banners"></home-swiper>
       <home-recommend :recommends="recommends"/>
       <feature-view/>
       <tab-control :titles="['流行','新款','精选']" class="tabControl" @tabClick="tabClick"/>
       <goods-list :goods="showgoods"/>
     </scroll>
-    <back-top/>
+    <back-top @click.native="backClick"/>
   </div>
 
 </template>
@@ -69,7 +69,11 @@ export default{
     this.getHomeGoods('sell')
   },
   methods:{
+
     // 事件监听相关
+    backClick(){
+      this.$refs.bscroll.scroll.scrollTo(0,0,500)
+    },
     tabClick(index){
       switch(index){
         case 0:
