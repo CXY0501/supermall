@@ -30,7 +30,7 @@ export default{
       mouseWheel: true
     }),
     this.scroll.on('scroll',(position)=>{
-      console.log(position)
+      this.$emit('scrollPosition',position)
     })
   }
 }

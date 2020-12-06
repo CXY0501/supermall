@@ -1,14 +1,14 @@
 <template>
   <div id="home">
     <div id="navBar"><nav-bar><div slot="center">购物街</div></nav-bar></div>
-    <scroll class="homecontent" ref="bscroll">
+    <scroll class="homecontent" ref="bscroll" @scrollPosition="SPosition">
       <home-swiper :banners="banners"></home-swiper>
       <home-recommend :recommends="recommends"/>
       <feature-view/>
       <tab-control :titles="['流行','新款','精选']" class="tabControl" @tabClick="tabClick"/>
       <goods-list :goods="showgoods"/>
     </scroll>
-    <back-top @click.native="backClick"/>
+    <back-top @click.native="backClick" v-show="isShowBackTop"/>
   </div>
 
 </template>
@@ -54,7 +54,8 @@ export default{
         'new':{page:0, list:[]},
         'sell':{page:0, list:[]},
       },
-      currentType: 'pop'
+      currentType: 'pop',
+      isShowBackTop: false
     }
   },
   computed:{
@@ -73,6 +74,9 @@ export default{
     // 事件监听相关
     backClick(){
       this.$refs.bscroll.scroll.scrollTo(0,0,500)
+    },
+    SPosition(position){
+      this.isShowBackTop = position.y<-1000
     },
     tabClick(index){
       switch(index){
