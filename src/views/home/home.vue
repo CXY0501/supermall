@@ -1,7 +1,11 @@
 <template>
   <div id="home">
     <div id="navBar"><nav-bar><div slot="center">购物街</div></nav-bar></div>
-    <scroll class="homecontent" ref="bscroll" @scrollPosition="SPosition">
+    <scroll class="homecontent" 
+            ref="bscroll" 
+            @scrollPosition="SPosition" 
+            :pull-up-load="true"
+            @pullingUp="PullUpLoad">
       <home-swiper :banners="banners"></home-swiper>
       <home-recommend :recommends="recommends"/>
       <feature-view/>
@@ -78,6 +82,10 @@ export default{
     SPosition(position){
       this.isShowBackTop = position.y<-1000
     },
+    PullUpLoad(){
+      this.getHomeGoods(this.currentType)
+      this.$refs.bscroll.scroll.refresh()
+    },
     tabClick(index){
       switch(index){
         case 0:
@@ -104,7 +112,8 @@ export default{
       const page = this.goods[type].page+1
       getHomeGoods(type,page).then(res=>{
         this.goods[type].list.push(...res.data.list);
-        this.goods[type].page+1
+        this.goods[type].page+1;
+        this.$refs.bscroll.finishPullUp()
       })
     }
   }

@@ -17,20 +17,32 @@ export default{
       scroll: null
     }
   },
+  props:{
+    pullUpLoad:{
+      type: Boolean,
+      default: false
+    }
+  },
   methods:{
+    finishPullUp(){
+      this.scroll.finishPullUp()
+    }
   },
   mounted(){
     // this.refresh,
     this.scroll = new BScroll(this.$refs.wrapper,{
       observeDOM:true,
       probeType: 3,
-      pullUpLoad:true,
+      pullUpLoad:this.pullUpLoad,
       click:true,
       tap:true,
       mouseWheel: true
     }),
     this.scroll.on('scroll',(position)=>{
       this.$emit('scrollPosition',position)
+    }),
+    this.scroll.on('pullingUp',()=>{
+      this.$emit('pullingUp')
     })
   }
 }
