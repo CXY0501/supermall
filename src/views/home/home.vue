@@ -8,6 +8,7 @@
       <tab-control :titles="['流行','新款','精选']" class="tabControl" @tabClick="tabClick"/>
       <goods-list :goods="showgoods"/>
     </scroll>
+    <back-top/>
   </div>
 
 </template>
@@ -17,6 +18,7 @@ import NavBar from '../../components/common/navbar/NavBar'
 import scroll from '../../components/common/scroll/scroll'
 import tabControl from '../../components/content/tabControl/tabControl'
 import goodsList from '../../components/content/goods/goodsList'
+import backTop from '../../components/content/backTop/backTop'
 
 import HomeSwiper from './childcomps/HomeSwiper.vue'
 import HomeRecommend from './childcomps/HomeRecommend'
@@ -25,6 +27,7 @@ import featureView from './childcomps/featureView'
 import {getHomeMultidata,getHomeGoods} from '../../network/home'
 import GoodsList from '../../components/content/goods/goodsList.vue'
 import Scroll from '../../components/common/scroll/scroll.vue'
+import BackTop from '../../components/content/backTop/backTop.vue'
 
 
 export default{
@@ -34,10 +37,12 @@ export default{
     Scroll,
     tabControl,
     goodsList,
+    backTop,
     HomeSwiper,
     HomeRecommend,
     featureView,
     GoodsList,
+    BackTop,
     Scroll
   },
   data(){
