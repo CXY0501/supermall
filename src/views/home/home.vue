@@ -69,9 +69,14 @@ export default{
   },
   created(){
     this.getHomeMultidata(),
+
     this.getHomeGoods('pop'),
     this.getHomeGoods('new'),
-    this.getHomeGoods('sell')
+    this.getHomeGoods('sell'),
+
+    this.$bus.$on('itemImageLoad', ()=>{
+      this.$refs.bscroll.refresh()
+    })
   },
   methods:{
 
