@@ -29,6 +29,7 @@ export default{
     },
     refresh(){
       this.scroll && this.scroll.refresh()
+      console.log('------')
     }
   },
   mounted(){
