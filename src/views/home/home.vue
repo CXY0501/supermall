@@ -9,7 +9,7 @@
       <home-swiper :banners="banners"></home-swiper>
       <home-recommend :recommends="recommends"/>
       <feature-view/>
-      <tab-control :titles="['流行','新款','精选']" class="tabControl" @tabClick="tabClick"/>
+      <tab-control :titles="['流行','新款','精选']" ref="tabControl" @tabClick="tabClick"/>
       <goods-list :goods="showgoods"/>
     </scroll>
     <back-top @click.native="backClick" v-show="isShowBackTop"/>
@@ -59,7 +59,8 @@ export default{
         'sell':{page:0, list:[]},
       },
       currentType: 'pop',
-      isShowBackTop: false
+      isShowBackTop: false,
+      tabOffsetTop: 0
     }
   },
   computed:{

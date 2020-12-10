@@ -41,13 +41,17 @@ export default{
       click:true,
       tap:true,
       mouseWheel: true
-    }),
+    })
+    if (this.probeType == 2 || this.probeType == 3){
     this.scroll.on('scroll',(position)=>{
       this.$emit('scrollPosition',position)
-    }),
+      })
+    }
+    if (this.pullUpLoad){
     this.scroll.on('pullingUp',()=>{
       this.$emit('pullingUp')
-    })
+      })
+    }
   }
 }
 </script>
