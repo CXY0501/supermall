@@ -62,13 +62,21 @@ export default{
       currentType: 'pop',
       isShowBackTop: false,
       tabOffsetTop: 0,
-      isTabFixed:false
+      isTabFixed:false,
+      saveY:0
     }
   },
   computed:{
     showgoods(){
       return this.goods[this.currentType].list
     }
+  },
+  activated(){
+    this.$refs.bscroll.scroll.scrollTo(0,this.saveY,0)
+    this.$refs.bscroll.scroll.refresh()
+  },
+  deactivated(){
+    this.saveY = this.$refs.bscroll.scroll.y
   },
   created(){
     this.getHomeMultidata(),
