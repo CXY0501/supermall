@@ -1,9 +1,11 @@
 <template>
   <div class="goodsListItem" @click="itemClick">
-    <img :src="goodsItem.show.img" alt="" @load="imageLoad">
+    <!-- <img v-if="goodsItem.show" :src="goodsItem.show.img" alt="" @load="imageLoad"> -->
+    <!-- <img :src="getImg" :key="getImg" alt="" @load="imageLoad"> -->
+    <img v-if="goodsItem" :src="getImg" alt="" @load="imageLoad"> 
     <div class="goodsInfo">
       <p>{{goodsItem.title}}</p>
-      <span class="price">{{goodsItem.price}}</span>
+      <span class="price">¥{{goodsItem.price}}</span>
       <span class="favorite">{{goodsItem.cfav}}</span>
     </div>
   </div>
@@ -31,7 +33,12 @@ export default{
     itemClick(){
       this.$router.push('/detail/'+ this.goodsItem.iid)
     }
-  }
+  },
+  computed: {
+      getImg() {
+        return this.goodsItem.img || this.goodsItem.image || this.goodsItem.show.img
+      }
+    }
 }
 </script>
 

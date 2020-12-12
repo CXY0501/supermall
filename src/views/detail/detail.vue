@@ -8,19 +8,21 @@
     <detail-goods-info :detail-info="detailInfo"/>
     <detail-param-info :param-info="paramInfo"/>
     <detail-comments :comment-info="commentInfo"/>
+    <detail-recommend-info :recommend-list="recommendList"/>
    </scroll>
   </div>
 </template>
 
 <script>
 import DetailNavBar from '../detail/detailChild/detailNavBar'
-import {getDetail,Goods,Shop,GoodsParam} from '../../network/detail'
+import {getDetail,Goods,Shop,GoodsParam,getRecommend} from '../../network/detail'
 import DetailSwiper from '../detail/detailChild/detailSwiper'
 import DetailBaseInfo from '../detail/detailChild/detailBaseInfo'
 import DetailShopInfo from '../detail/detailChild/detailShopInfo'
 import DetailGoodsInfo from '../detail/detailChild/detailGoodsInfo'
 import DetailParamInfo from '../detail/detailChild/detailParamInfo'
 import DetailComments from '../detail/detailChild/detailComments'
+import DetailRecommendInfo from '../detail/detailChild/detailRecommendInfo'
 
 import Scroll from '../../components/common/scroll/scroll'
 
@@ -34,7 +36,8 @@ export default{
     Scroll,
     DetailGoodsInfo,
     DetailParamInfo,
-    DetailComments
+    DetailComments,
+    DetailRecommendInfo
   },
   data(){
     return{
@@ -44,7 +47,8 @@ export default{
       shop:{},
       detailInfo:{},
       paramInfo:{},
-      commentInfo:{}
+      commentInfo:{},
+      recommendList:[]
     }
   },
   created(){
@@ -60,6 +64,10 @@ export default{
             this.commentInfo = data.rate.list[0];
           }
     })
+    getRecommend().then((res, error) => {
+          if (error) return
+          this.recommendList = res.data.list
+        })
   },
   methods:{
     imageLoad(){
