@@ -1,15 +1,16 @@
 <template>
   <div id="home">
     <div id="navBar"><nav-bar><div slot="center">购物街</div></nav-bar></div>
+    <tab-control :titles="['流行','新款','精选']" ref="tabControl1" @tabClick="tabClick" class="tab-Control" v-show="isTabFixed"/>
     <scroll class="homecontent" 
             ref="bscroll" 
             @scrollPosition="SPosition" 
             :pull-up-load="true"
             @pullingUp="PullUpLoad">
-      <home-swiper :banners="banners"></home-swiper>
+      <home-swiper :banners="banners" @swiperImageLoad="swiperImageLoad"></home-swiper>
       <home-recommend :recommends="recommends"/>
       <feature-view/>
-      <tab-control :titles="['流行','新款','精选']" ref="tabControl" @tabClick="tabClick"/>
+      <tab-control :titles="['流行','新款','精选']" ref="tabControl2" @tabClick="tabClick" />
       <goods-list :goods="showgoods"/>
     </scroll>
     <back-top @click.native="backClick" v-show="isShowBackTop"/>
@@ -60,7 +61,8 @@ export default{
       },
       currentType: 'pop',
       isShowBackTop: false,
-      tabOffsetTop: 0
+      tabOffsetTop: 0,
+      isTabFixed:false
     }
   },
   computed:{
@@ -76,6 +78,7 @@ export default{
     this.getHomeGoods('sell')
   },
   mounted(){
+      this.tabOffsetTop = this.$refs.tabControl
       const refresh = this.debounce(this.$refs.bscroll.refresh,500)
       this.$bus.$on('itemImageLoad', ()=>{
         refresh()
@@ -97,7 +100,9 @@ export default{
       this.$refs.bscroll.scroll.scrollTo(0,0,500)
     },
     SPosition(position){
+      // console.log(position.y)
       this.isShowBackTop = position.y<-1000
+      this.isTabFixed = -(position.y)>this.tabOffsetTop
     },
     PullUpLoad(){
       this.getHomeGoods(this.currentType)
@@ -115,6 +120,11 @@ export default{
           this.currentType = 'sell'
           break
       }
+      this.$refs.tabControl1.currentIndex = index
+      this.$refs.tabControl2.currentIndex = index
+    },
+    swiperImageLoad(){
+      this.tabOffsetTop = this.$refs.tabControl2.$el.offsetTop
     },
 
     // 网络请求相关
@@ -152,10 +162,6 @@ export default{
     top: 0;
     z-index: 9;
   }
-  .tabControl{
-    position: sticky;
-    top:44px
-  }
   .homecontent{
     /* overflow-y: scroll; */
     overflow: hidden;
@@ -165,4 +171,10 @@ export default{
     left: 0;
     right: 0;
   }
+  .tab-Control{
+    position: relative;
+    /* top: 44px; */
+    z-index:9;
+  }
+  
 </style>
