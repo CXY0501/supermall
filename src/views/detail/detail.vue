@@ -7,6 +7,7 @@
     <detail-shop-info :shop="shop"/>
     <detail-goods-info :detail-info="detailInfo"/>
     <detail-param-info :param-info="paramInfo"/>
+    <detail-comments :comment-info="commentInfo"/>
    </scroll>
   </div>
 </template>
@@ -19,6 +20,7 @@ import DetailBaseInfo from '../detail/detailChild/detailBaseInfo'
 import DetailShopInfo from '../detail/detailChild/detailShopInfo'
 import DetailGoodsInfo from '../detail/detailChild/detailGoodsInfo'
 import DetailParamInfo from '../detail/detailChild/detailParamInfo'
+import DetailComments from '../detail/detailChild/detailComments'
 
 import Scroll from '../../components/common/scroll/scroll'
 
@@ -31,7 +33,8 @@ export default{
     DetailShopInfo,
     Scroll,
     DetailGoodsInfo,
-    DetailParamInfo
+    DetailParamInfo,
+    DetailComments
   },
   data(){
     return{
@@ -40,7 +43,8 @@ export default{
       goods:{},
       shop:{},
       detailInfo:{},
-      paramInfo:{}
+      paramInfo:{},
+      commentInfo:{}
     }
   },
   created(){
@@ -52,6 +56,9 @@ export default{
       this.shop = new Shop (data.shopInfo)
       this.detailInfo = data.detailInfo
       this.paramInfo = new GoodsParam(data.itemParams.info,data.itemParams.rule)
+      if (data.rate.list) {
+            this.commentInfo = data.rate.list[0];
+          }
     })
   },
   methods:{
