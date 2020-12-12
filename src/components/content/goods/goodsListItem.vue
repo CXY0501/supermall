@@ -31,7 +31,8 @@ export default{
       this.$bus.$emit('itemImageLoad')
     },
     itemClick(){
-      this.$router.push('/detail/'+ this.goodsItem.iid)
+      let iid = this.goodsItem.iid || this.goodsItem.item_id
+      this.$router.push('/detail/'+ iid)
     }
   },
   computed: {
