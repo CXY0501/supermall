@@ -6,17 +6,19 @@
     <detail-base-info :goods="goods"/>
     <detail-shop-info :shop="shop"/>
     <detail-goods-info :detail-info="detailInfo"/>
+    <detail-param-info :param-info="paramInfo"/>
    </scroll>
   </div>
 </template>
 
 <script>
 import DetailNavBar from '../detail/detailChild/detailNavBar'
-import {getDetail,Goods,Shop} from '../../network/detail'
+import {getDetail,Goods,Shop,GoodsParam} from '../../network/detail'
 import DetailSwiper from '../detail/detailChild/detailSwiper'
 import DetailBaseInfo from '../detail/detailChild/detailBaseInfo'
 import DetailShopInfo from '../detail/detailChild/detailShopInfo'
 import DetailGoodsInfo from '../detail/detailChild/detailGoodsInfo'
+import DetailParamInfo from '../detail/detailChild/detailParamInfo'
 
 import Scroll from '../../components/common/scroll/scroll'
 
@@ -28,7 +30,8 @@ export default{
     DetailBaseInfo,
     DetailShopInfo,
     Scroll,
-    DetailGoodsInfo
+    DetailGoodsInfo,
+    DetailParamInfo
   },
   data(){
     return{
@@ -36,7 +39,8 @@ export default{
       topImages:[],
       goods:{},
       shop:{},
-      detailInfo:{}
+      detailInfo:{},
+      paramInfo:{}
     }
   },
   created(){
@@ -47,6 +51,7 @@ export default{
       this.goods = new Goods(data.itemInfo,data.columns,data.shopInfo.services)
       this.shop = new Shop (data.shopInfo)
       this.detailInfo = data.detailInfo
+      this.paramInfo = new GoodsParam(data.itemParams.info,data.itemParams.rule)
     })
   },
   methods:{
