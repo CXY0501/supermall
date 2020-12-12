@@ -1,25 +1,32 @@
 <template>
   <div id="detail">
    <detail-nav-bar/>
+   <detail-swiper :top-images="topImages"/>
   </div>
 </template>
 
 <script>
 import DetailNavBar from '../detail/detailChild/detailNavBar'
+import {getDetail} from '../../network/detail'
+import DetailSwiper from '../detail/detailChild/detailSwiper'
 
 export default{
   name:'detail',
   components:{
-    DetailNavBar
+    DetailNavBar,
+    DetailSwiper
   },
   data(){
     return{
-      iid:null
+      iid:null,
+      topImages:[]
     }
   },
   created(){
-    console.log(this.$route.params.iid)
     this.iid = this.$route.params.iid
+    getDetail(this.iid).then(res=>{
+      this.topImages = res.result.itemInfo.topImages
+    })
   },
   methods:{
   }
