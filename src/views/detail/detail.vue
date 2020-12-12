@@ -50,6 +50,9 @@ export default{
     })
   },
   methods:{
+    imageLoad(){
+      this.$refs.scroll.refresh()
+    }
   }
 }
 </script>
