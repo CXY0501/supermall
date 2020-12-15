@@ -63,7 +63,8 @@ export default{
       isShowBackTop: false,
       tabOffsetTop: 0,
       isTabFixed:false,
-      saveY:0
+      saveY:0,
+      itemImgListener: null
     }
   },
   computed:{
@@ -77,6 +78,7 @@ export default{
   },
   deactivated(){
     this.saveY = this.$refs.bscroll.scroll.y
+    this.$bus.$off('itemImgLoad',this.itemImgListener)
   },
   created(){
     this.getHomeMultidata(),
@@ -88,9 +90,9 @@ export default{
   mounted(){
       this.tabOffsetTop = this.$refs.tabControl
       const refresh = this.debounce(this.$refs.bscroll.refresh,500)
-      this.$bus.$on('itemImageLoad', ()=>{
-        refresh()
-    })
+      this.itemImgListener = ()=>{
+        refresh(20,30,'abc')}
+      this.$bus.$on('itemImageLoad', this.itemImgListener)
   },
   methods:{
 
