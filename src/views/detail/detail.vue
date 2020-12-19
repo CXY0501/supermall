@@ -1,14 +1,14 @@
 <template>
   <div id="detail">
-   <detail-nav-bar class="detailNavBar"/>
+   <detail-nav-bar class="detailNavBar" @titleClick="titleClick"/>
    <scroll class="content" ref="bscroll">
     <detail-swiper :top-images="topImages"/>
     <detail-base-info :goods="goods"/>
     <detail-shop-info :shop="shop"/>
-    <detail-goods-info :detail-info="detailInfo"/>
-    <detail-param-info :param-info="paramInfo"/>
-    <detail-comments :comment-info="commentInfo"/>
-    <detail-recommend-info :recommend-list="recommendList"/>
+    <detail-goods-info :detail-info="detailInfo" @imageLoad="imageLoad"/>
+    <detail-param-info :param-info="paramInfo" ref="params"/>
+    <detail-comments :comment-info="commentInfo" ref="comment"/>
+    <detail-recommend-info :recommend-list="recommendList" ref="recommend"/>
    </scroll>
   </div>
 </template>
@@ -25,7 +25,6 @@ import DetailComments from '../detail/detailChild/detailComments'
 import DetailRecommendInfo from '../detail/detailChild/detailRecommendInfo'
 
 import Scroll from '../../components/common/scroll/scroll'
-import {debounce} from '../../common/utils'
 
 export default{
   name:'detail',
@@ -50,7 +49,8 @@ export default{
       paramInfo:{},
       commentInfo:{},
       recommendList:[],
-      itemImgListener: null
+      itemImgListener: null,
+      themeTopYs:[]
     }
   },
   created(){
@@ -65,6 +65,14 @@ export default{
       if (data.rate.list) {
             this.commentInfo = data.rate.list[0];
           }
+      // this.$nextTick(()=>{
+      //   this.themeTopYs = []
+      //   this.themeTopYs.push (0)
+      //   this.themeTopYs.push (this.$refs.params.$el.offsetTop)
+      //   this.themeTopYs.push (this.$refs.comment.$el.offsetTop)
+      //   this.themeTopYs.push (this.$refs.recommend.$el.offsetTop)
+      //   console.log(this.themeTopYs)
+      // },2000)
     })
     getRecommend().then((res, error) => {
           if (error) return
@@ -72,7 +80,7 @@ export default{
         })
   },
   mounted(){
-    let newRefresh = this.debounce(this.$refs.bscroll.refresh,500)
+    const newRefresh = this.debounce(this.$refs.bscroll.scroll.refresh,500)
     this.itemImgListener = ()=>{
       newRefresh()
     }
@@ -81,9 +89,33 @@ export default{
   destroyed(){
     this.$bus.$off('itemImgLoad',this.itemImgListener)
   },
+  updated() {
+      // 获取需要的四个offsetTop
+      this._getOffsetTops()
+    },
   methods:{
+    debounce(func,delay){
+      let timer = null
+      return function(...args){
+        if (timer) clearTimeout(timer)
+        timer = setTimeout(()=>{
+          func.apply(this, args)
+        },delay)
+      }
+    },
+    _getOffsetTops(){
+        this.themeTopYs = []
+        this.themeTopYs.push (0)
+        this.themeTopYs.push (this.$refs.params.$el.offsetTop)
+        this.themeTopYs.push (this.$refs.comment.$el.offsetTop)
+        this.themeTopYs.push (this.$refs.recommend.$el.offsetTop)
+        console.log(this.themeTopYs)
+    },
     imageLoad(){
-      this.$refs.scroll.refresh()
+      this.newRefresh()
+    },
+    titleClick(index){
+      this.$refs.bscroll.scroll.scrollTo(0,-this.themeTopYs[index],200)
     }
   }
 }
