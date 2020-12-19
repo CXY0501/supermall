@@ -1,7 +1,7 @@
 <template>
   <div id="detail">
    <detail-nav-bar class="detailNavBar"/>
-   <scroll class="content">
+   <scroll class="content" ref="bscroll">
     <detail-swiper :top-images="topImages"/>
     <detail-base-info :goods="goods"/>
     <detail-shop-info :shop="shop"/>
@@ -25,6 +25,7 @@ import DetailComments from '../detail/detailChild/detailComments'
 import DetailRecommendInfo from '../detail/detailChild/detailRecommendInfo'
 
 import Scroll from '../../components/common/scroll/scroll'
+import {debounce} from '../../common/utils'
 
 export default{
   name:'detail',
@@ -48,7 +49,8 @@ export default{
       detailInfo:{},
       paramInfo:{},
       commentInfo:{},
-      recommendList:[]
+      recommendList:[],
+      itemImgListener: null
     }
   },
   created(){
@@ -68,6 +70,16 @@ export default{
           if (error) return
           this.recommendList = res.data.list
         })
+  },
+  mounted(){
+    let newRefresh = this.debounce(this.$refs.bscroll.refresh,500)
+    this.itemImgListener = ()=>{
+      newRefresh()
+    }
+    this.$bus.$on('itemImgLoad',this.itemImgListener)
+  },
+  destroyed(){
+    this.$bus.$off('itemImgLoad',this.itemImgListener)
   },
   methods:{
     imageLoad(){

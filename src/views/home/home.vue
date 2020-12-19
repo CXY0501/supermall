@@ -31,7 +31,6 @@ import featureView from './childcomps/featureView'
 
 import {getHomeMultidata,getHomeGoods} from '../../network/home'
 import GoodsList from '../../components/content/goods/goodsList.vue'
-import Scroll from '../../components/common/scroll/scroll.vue'
 import BackTop from '../../components/content/backTop/backTop.vue'
 
 
@@ -39,7 +38,7 @@ export default{
   name:'home',
   components:{
     NavBar,
-    Scroll,
+    scroll,
     tabControl,
     goodsList,
     backTop,
@@ -48,7 +47,6 @@ export default{
     featureView,
     GoodsList,
     BackTop,
-    Scroll
   },
   data(){
     return{
@@ -91,7 +89,7 @@ export default{
       this.tabOffsetTop = this.$refs.tabControl
       const refresh = this.debounce(this.$refs.bscroll.refresh,500)
       this.itemImgListener = ()=>{
-        refresh(20,30,'abc')}
+        refresh()}
       this.$bus.$on('itemImageLoad', this.itemImgListener)
   },
   methods:{
