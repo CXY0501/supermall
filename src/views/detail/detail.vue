@@ -13,6 +13,7 @@
     <detail-comments :comment-info="commentInfo" ref="comment"/>
     <detail-recommend-info :recommend-list="recommendList" ref="recommend"/>
    </scroll>
+   <detail-bottom-bar/>
   </div>
 </template>
 
@@ -26,6 +27,7 @@ import DetailGoodsInfo from '../detail/detailChild/detailGoodsInfo'
 import DetailParamInfo from '../detail/detailChild/detailParamInfo'
 import DetailComments from '../detail/detailChild/detailComments'
 import DetailRecommendInfo from '../detail/detailChild/detailRecommendInfo'
+import DetailBottomBar from '../detail/detailChild/detailBottomBar'
 
 import Scroll from '../../components/common/scroll/scroll'
 
@@ -40,7 +42,8 @@ export default{
     DetailGoodsInfo,
     DetailParamInfo,
     DetailComments,
-    DetailRecommendInfo
+    DetailRecommendInfo,
+    DetailBottomBar
   },
   data(){
     return{
@@ -123,7 +126,7 @@ export default{
         if(this.currentIndex !== i && 
         ((i<length-1)&&(positionY>=this.themeTopYs[i])&&(positionY<this.themeTopYs[i+1]))){
           this.currentIndex = i
-          console.log(this.currentIndex)
+          // console.log(this.currentIndex)
           this.$refs.nav.currentIndex = this.currentIndex
         }
       }
@@ -146,7 +149,7 @@ export default{
   background-color: #fff;
 }
 .content{
-  height: calc(100% - 44px);
+  height: calc(100% - 44px - 49px);
   
 }
 </style>
