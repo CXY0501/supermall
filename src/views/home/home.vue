@@ -7,7 +7,7 @@
             @scrollPosition="SPosition" 
             :pull-up-load="true"
             @pullingUp="PullUpLoad">
-      <home-swiper :banners="banners" @swiperImageLoad="swiperImageLoad"></home-swiper>
+      <home-swiper :banners="banners" @swiperImageLoad="swiperImageLoad"/>
       <home-recommend :recommends="recommends"/>
       <feature-view/>
       <tab-control :titles="['流行','新款','精选']" ref="tabControl2" @tabClick="tabClick" />

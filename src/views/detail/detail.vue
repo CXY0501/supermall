@@ -5,7 +5,7 @@
     <detail-swiper :top-images="topImages"/>
     <detail-base-info :goods="goods"/>
     <detail-shop-info :shop="shop"/>
-    <detail-goods-info :detail-info="detailInfo" @imageLoad="imageLoad"/>
+    <detail-goods-info :detail-info="detailInfo" @DetailImageLoad="DetailImageLoad"/>
     <detail-param-info :param-info="paramInfo" ref="params"/>
     <detail-comments :comment-info="commentInfo" ref="comment"/>
     <detail-recommend-info :recommend-list="recommendList" ref="recommend"/>
@@ -80,7 +80,7 @@ export default{
         })
   },
   mounted(){
-    const newRefresh = this.debounce(this.$refs.bscroll.scroll.refresh,500)
+    const newRefresh = this.debounce(this.$refs.bscroll.refresh,500)
     this.itemImgListener = ()=>{
       newRefresh()
     }
@@ -89,10 +89,6 @@ export default{
   destroyed(){
     this.$bus.$off('itemImgLoad',this.itemImgListener)
   },
-  updated() {
-      // 获取需要的四个offsetTop
-      this._getOffsetTops()
-    },
   methods:{
     debounce(func,delay){
       let timer = null
@@ -103,16 +99,14 @@ export default{
         },delay)
       }
     },
-    _getOffsetTops(){
+    DetailImageLoad(){
+        this.$refs.bscroll.scroll.refresh()
         this.themeTopYs = []
         this.themeTopYs.push (0)
         this.themeTopYs.push (this.$refs.params.$el.offsetTop)
         this.themeTopYs.push (this.$refs.comment.$el.offsetTop)
         this.themeTopYs.push (this.$refs.recommend.$el.offsetTop)
         console.log(this.themeTopYs)
-    },
-    imageLoad(){
-      this.newRefresh()
     },
     titleClick(index){
       this.$refs.bscroll.scroll.scrollTo(0,-this.themeTopYs[index],200)
