@@ -1,7 +1,10 @@
 <template>
   <div id="detail">
    <detail-nav-bar class="detailNavBar" @titleClick="titleClick"/>
-   <scroll class="content" ref="bscroll">
+   <scroll class="content" 
+          ref="bscroll" 
+          :probe-type="3" 
+          @scrollPosition="contentScroll">
     <detail-swiper :top-images="topImages"/>
     <detail-base-info :goods="goods"/>
     <detail-shop-info :shop="shop"/>
@@ -110,6 +113,9 @@ export default{
     },
     titleClick(index){
       this.$refs.bscroll.scroll.scrollTo(0,-this.themeTopYs[index],200)
+    },
+    contentScroll(position){
+      console.log(position)
     }
   }
 }
