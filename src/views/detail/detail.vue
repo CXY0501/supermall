@@ -110,6 +110,7 @@ export default{
         this.themeTopYs.push (this.$refs.params.$el.offsetTop)
         this.themeTopYs.push (this.$refs.comment.$el.offsetTop)
         this.themeTopYs.push (this.$refs.recommend.$el.offsetTop)
+        this.themeTopYs.push (Number.MAX_VALUE)
         console.log(this.themeTopYs)
     },
     titleClick(index){
@@ -119,9 +120,8 @@ export default{
       const positionY = - position.y
       let length = this.themeTopYs.length
       for(let i= 0; i<length; i++){
-        if(this.currentIndex != i && 
-        ((i<length-1)&&(positionY>=this.themeTopYs[i])&&(positionY<this.themeTopYs[i+1])
-        ||((i===length-1)&&(positionY>=this.themeTopYs[i])))){
+        if(this.currentIndex !== i && 
+        ((i<length-1)&&(positionY>=this.themeTopYs[i])&&(positionY<this.themeTopYs[i+1]))){
           this.currentIndex = i
           console.log(this.currentIndex)
           this.$refs.nav.currentIndex = this.currentIndex
