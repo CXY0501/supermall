@@ -1,6 +1,6 @@
 <template>
   <div id="detail">
-   <detail-nav-bar class="detailNavBar" @titleClick="titleClick"/>
+   <detail-nav-bar class="detailNavBar" @titleClick="titleClick" ref="nav"/>
    <scroll class="content" 
           ref="bscroll" 
           :probe-type="3" 
@@ -53,7 +53,8 @@ export default{
       commentInfo:{},
       recommendList:[],
       itemImgListener: null,
-      themeTopYs:[]
+      themeTopYs:[],
+      currentIndex:0
     }
   },
   created(){
@@ -115,7 +116,17 @@ export default{
       this.$refs.bscroll.scroll.scrollTo(0,-this.themeTopYs[index],200)
     },
     contentScroll(position){
-      console.log(position)
+      const positionY = - position.y
+      let length = this.themeTopYs.length
+      for(let i= 0; i<length; i++){
+        if(this.currentIndex != i && 
+        ((i<length-1)&&(positionY>=this.themeTopYs[i])&&(positionY<this.themeTopYs[i+1])
+        ||((i===length-1)&&(positionY>=this.themeTopYs[i])))){
+          this.currentIndex = i
+          console.log(this.currentIndex)
+          this.$refs.nav.currentIndex = this.currentIndex
+        }
+      }
     }
   }
 }
