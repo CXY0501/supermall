@@ -13,6 +13,7 @@
     <detail-comments :comment-info="commentInfo" ref="comment"/>
     <detail-recommend-info :recommend-list="recommendList" ref="recommend"/>
    </scroll>
+   <back-top @click.native="backClick" v-show="isShowBackTop"/>
    <detail-bottom-bar/>
   </div>
 </template>
@@ -28,8 +29,11 @@ import DetailParamInfo from '../detail/detailChild/detailParamInfo'
 import DetailComments from '../detail/detailChild/detailComments'
 import DetailRecommendInfo from '../detail/detailChild/detailRecommendInfo'
 import DetailBottomBar from '../detail/detailChild/detailBottomBar'
+import backTop from '../../components/content/backTop/backTop'
 
 import Scroll from '../../components/common/scroll/scroll'
+
+import {backTopMixin} from '../../common/mixin'
 
 export default{
   name:'detail',
@@ -43,8 +47,10 @@ export default{
     DetailParamInfo,
     DetailComments,
     DetailRecommendInfo,
-    DetailBottomBar
+    DetailBottomBar,
+    backTop
   },
+  mixins:[backTopMixin],
   data(){
     return{
       iid:null,
@@ -130,6 +136,7 @@ export default{
           this.$refs.nav.currentIndex = this.currentIndex
         }
       }
+      this.listenShowBackTop(position)
     }
   }
 }
@@ -150,6 +157,5 @@ export default{
 }
 .content{
   height: calc(100% - 44px - 49px);
-  
 }
 </style>

@@ -30,8 +30,6 @@ import HomeRecommend from './childcomps/HomeRecommend'
 import featureView from './childcomps/featureView'
 
 import {getHomeMultidata,getHomeGoods} from '../../network/home'
-import GoodsList from '../../components/content/goods/goodsList.vue'
-import BackTop from '../../components/content/backTop/backTop.vue'
 
 
 export default{
@@ -45,8 +43,6 @@ export default{
     HomeSwiper,
     HomeRecommend,
     featureView,
-    GoodsList,
-    BackTop,
   },
   data(){
     return{
