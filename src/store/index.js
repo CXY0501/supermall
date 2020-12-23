@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import getters from './getters'
 
 Vue.use(Vuex)
 
@@ -8,18 +9,27 @@ const store = new Vuex.Store({
         cartList:[]
     },
     mutations:{
-        addCart(state,payload){
+        addCounter(state,payload){
+            payload.count++
+        },
+        addToCart(state,payload){
+            state.cartList.push(payload)
+        }
+    },
+    getters,
+    actions:{
+        addCart(context,payload){
             let oldProduct = null
-            for (let item of state.cartList){
+            for (let item of context.state.cartList){
                 if(item.iid === payload.iid){
                     oldProduct = item
                 }
             }
             if (oldProduct){
-                oldProduct.count += 1
+                context.commit('addCounter',oldProduct)
             }else{
                 payload.count = 1
-                state.cartList.push(payload)
+                context.commit('addToCart',payload)
             }
         }
     }

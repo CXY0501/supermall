@@ -1,6 +1,5 @@
 <template>
   <div id="detail">
-    <div>{{$store.state.cartList.length}}</div>
    <detail-nav-bar class="detailNavBar" @titleClick="titleClick" ref="nav"/>
    <scroll class="content" 
           ref="bscroll" 
@@ -151,7 +150,8 @@ export default{
       console.log(this.detailInfo)
       console.log(product)
 
-      this.$store.commit('addCart',product)
+      // this.$store.commit('addCart',product)
+      this.$store.dispatch('addCart',product)
     }
   }
 }
