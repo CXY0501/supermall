@@ -1,5 +1,6 @@
 <template>
   <div id="detail">
+    <div>{{$store.state.cartList.length}}</div>
    <detail-nav-bar class="detailNavBar" @titleClick="titleClick" ref="nav"/>
    <scroll class="content" 
           ref="bscroll" 
@@ -14,7 +15,7 @@
     <detail-recommend-info :recommend-list="recommendList" ref="recommend"/>
    </scroll>
    <back-top @click.native="backClick" v-show="isShowBackTop"/>
-   <detail-bottom-bar/>
+   <detail-bottom-bar @addToCart="addToCart"/>
   </div>
 </template>
 
@@ -137,6 +138,20 @@ export default{
         }
       }
       this.listenShowBackTop(position)
+    },
+    addToCart(){
+      console.log('点击加入购物车')
+      const product = {}
+      product.image = this.topImages[0]
+      product.title = this.goods.title
+      product.desc = this.goods.desc
+      product.price = this.goods.realPrice
+      product.iid = this.iid
+      console.log(this.goods)
+      console.log(this.detailInfo)
+      console.log(product)
+
+      this.$store.commit('addCart',product)
     }
   }
 }
