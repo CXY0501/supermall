@@ -2,7 +2,7 @@
   <div class="cartList">
     <scroll class="CartContent" ref="scroll">
     <!-- <li v-for="item in cartList" :key="item.iid">{{item}}</li> -->
-    <cart-list-item v-for="(item,index) in cartList" :product="item" :key="index"></cart-list-item>
+    <cart-list-item v-for="(item,index) in cartList" :item-info="item" :key="index"></cart-list-item>
     </scroll>
   </div>
   
