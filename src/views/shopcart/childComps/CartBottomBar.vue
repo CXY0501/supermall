@@ -4,7 +4,12 @@
       <check-button class="checkall"/>
       <span>全选</span>
     </div>
-    
+    <div class="price">
+      总价格：{{totalPrice}}
+    </div>
+    <div class="calculate">
+      去计算({{checkLength}})
+    </div>
   </div>
 </template>
 
@@ -20,6 +25,18 @@ export default{
     checkButton
   },
   methods:{
+  },
+  computed:{
+    totalPrice(){
+      return '¥'+this.$store.state.cartList.filter(item=>{
+        return item.checked
+      }).reduce((preValue,item)=>{
+        return preValue+item.price*item.count
+      },0).toFixed(2)
+    },
+    checkLength(){
+      return this.$store.state.cartList.filter(item => item.checked).length
+    }
   }
 }
 </script>
@@ -32,18 +49,30 @@ export default{
   bottom: 135px;
   z-index: 9;
   line-height: 40px;
-  
-  
+  display: flex;
+  font-size: 14px;
 }
 .check-content{
   display: flex;
   align-items: center;
   margin-left: 10px;
+  width: 60px;
 }
 .checkall{
   width: 20px;
   height: 20px;
   line-height: 20px;
+  margin-right: 5px;
 }
-
+.price{
+  margin-left: 25px;
+  flex:1;
+}
+.calculate{
+  margin-left: 45px;
+  width: 90px;
+  background-color:red;
+  color: #eee;
+  text-align: center;
+}
 </style>
