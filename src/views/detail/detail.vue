@@ -15,7 +15,7 @@
    </scroll>
    <back-top @click.native="backClick" v-show="isShowBackTop"/>
    <detail-bottom-bar @addToCart="addToCart"/>
-   <toast :message="message" :show="show"/>
+   <!-- <toast :message="message" :show="show"/> -->
   </div>
 </template>
 
@@ -31,7 +31,7 @@ import DetailComments from '../detail/detailChild/detailComments'
 import DetailRecommendInfo from '../detail/detailChild/detailRecommendInfo'
 import DetailBottomBar from '../detail/detailChild/detailBottomBar'
 import backTop from '../../components/content/backTop/backTop'
-import Toast from '../../components/common/toast/toast'
+// import Toast from '../../components/common/toast/toast'
 
 import Scroll from '../../components/common/scroll/scroll'
 
@@ -52,7 +52,7 @@ export default{
     DetailRecommendInfo,
     DetailBottomBar,
     backTop,
-    Toast
+    // Toast
   },
   mixins:[backTopMixin],
   data(){
@@ -68,8 +68,8 @@ export default{
       itemImgListener: null,
       themeTopYs:[],
       currentIndex:0,
-      message:'',
-      show: false
+      // message:'',
+      // show: false
     }
   },
   created(){
@@ -157,19 +157,22 @@ export default{
       product.iid = this.iid
   
       this.add(product).then(res =>{
-        console.log(res)
-        this.show = true
-        this.message = res
+      //   console.log(res)
+      //   this.show = true
+      //   this.message = res
 
-        setTimeout(() => {
-          this.show = false
-          this.message = ''
-        }, 1500);
+      //   setTimeout(() => {
+      //     this.show = false
+      //     this.message = ''
+      //   }, 1500);
+        this.$toast.show(res)
+        console.log(this.$toast)
       })
       // this.$store.commit('addCart',product)
       // this.$store.dispatch('addCart',product).then(res =>{
       //   console.log(res)
       // })
+      
     }
   }
 }
