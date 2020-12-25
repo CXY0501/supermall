@@ -139,19 +139,19 @@ export default{
       this.listenShowBackTop(position)
     },
     addToCart(){
-      console.log('点击加入购物车')
+      // console.log('点击加入购物车')
       const product = {}
       product.image = this.topImages[0]
       product.title = this.goods.title
       product.desc = this.goods.desc
       product.price = this.goods.realPrice
       product.iid = this.iid
-      console.log(this.goods)
-      console.log(this.detailInfo)
-      console.log(product)
+  
 
       // this.$store.commit('addCart',product)
-      this.$store.dispatch('addCart',product)
+      this.$store.dispatch('addCart',product).then(res =>{
+        console.log(res)
+      })
     }
   }
 }
