@@ -2,7 +2,7 @@
   <div class="goodsListItem" @click="itemClick">
     <!-- <img v-if="goodsItem.show" :src="goodsItem.show.img" alt="" @load="imageLoad"> -->
     <!-- <img :src="getImg" :key="getImg" alt="" @load="imageLoad"> -->
-    <img v-if="goodsItem" :src="getImg" alt="" @load="imageLoad"> 
+    <img v-if="goodsItem" v-lazy="getImg" alt="" @load="imageLoad"> 
     <div class="goodsInfo">
       <p>{{goodsItem.title}}</p>
       <span class="price">¥{{goodsItem.price}}</span>
