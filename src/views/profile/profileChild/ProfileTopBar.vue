@@ -34,6 +34,7 @@ export default{
 
 <style scoped>
 .ProfileTopBar{
+  padding-top: 8px;
   height: 120px;
   background-color: var(--color-tint);
   color: #fff;
@@ -42,7 +43,7 @@ export default{
 .myProfile{
   font-size: 20px;
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 18px;
 }
 .account img{
   height: 60px;
