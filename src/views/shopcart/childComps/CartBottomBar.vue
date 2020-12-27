@@ -34,7 +34,8 @@ export default{
       }
     },
     calculateClick(){
-      if(!this.selectAll){
+      // console.log(this.selectNone)
+      if(this.selectNone){
         this.$toast.show('请选择购买的商品')
       }
     }
@@ -49,6 +50,14 @@ export default{
     },
     checkLength(){
       return this.$store.state.cartList.filter(item => item.checked).length
+    },
+    selectNone(){
+      // console.log(this.$store.state.cartList.length)
+      if(this.$store.state.cartList.filter(item => item.checked).length === 0){
+        return true
+      } else {
+        return false
+      }
     },
     selectAll(){
       if(this.$store.state.cartList.length === 0){
