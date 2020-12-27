@@ -1,14 +1,19 @@
 <template>
   <div>
-    <h2>我的档案</h2>
+    <profile-top-bar/>
   </div>
 </template>
 
 <script>
+import ProfileTopBar from './profileChild/ProfileTopBar'
+
 export default{
   name:'profile',
   data(){
     return{}
+  },
+  components:{
+    ProfileTopBar
   },
   methods:{
   }
