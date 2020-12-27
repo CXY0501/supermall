@@ -35,14 +35,17 @@ export default{
 
 <style scoped>
 .cartList{
-  height: 100%;
+  height: calc(100vh - 49px - 44px - 44px);
   position: relative;
+  top: 0;
+  bottom: calc(49px + 44px)
 }
 .CartContent{
   overflow: hidden;
   position: absolute;
-  top: 0;
-  bottom: 96px;
+  top:0;
+  bottom: 0;
+  /* padding-bottom: 93px; */
   left: 0;
   right: 0;
 }
