@@ -23,7 +23,8 @@ export default{
   },
   methods:{
     MyShoppingCart(){
-      console.log('点击我的购物车')
+      // console.log('点击我的购物车')
+      this.$router.replace('/shopcart')
     }
   }
 }
@@ -49,6 +50,6 @@ export default{
   border-bottom: 2px rgb(230, 228, 228) solid;
 }
 .app{
-  height: 1000px;
+  height: 50vh;
 }
 </style>
