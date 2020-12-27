@@ -64,9 +64,9 @@ export default{
 .cartBottomBar{
   height: 40px;
   background-color:#eee;
-  position: relative;
-  bottom: 135px;
-  z-index: 9;
+  /* position: relative; */
+  /* bottom: 135px; */
+  z-index: 999;
   line-height: 40px;
   display: flex;
   font-size: 14px;
@@ -84,12 +84,13 @@ export default{
   margin-right: 5px;
 }
 .price{
+  width: 150px;
   margin-left: 25px;
   flex:1;
 }
 .calculate{
-  margin-left: 45px;
-  width: 90px;
+  /* margin-left: 45px; */
+  width: calc(100vw - 60px - 150px);
   background-color:red;
   color: #eee;
   text-align: center;

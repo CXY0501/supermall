@@ -166,7 +166,7 @@ export default{
       //     this.message = ''
       //   }, 1500);
         this.$toast.show(res)
-        console.log(this.$toast)
+        // console.log(this.$toast)
       })
       // this.$store.commit('addCart',product)
       // this.$store.dispatch('addCart',product).then(res =>{

@@ -4,7 +4,7 @@
       <div slot="center">购物车({{cartLength}})</div>
     </nav-bar>
     <cart-list></cart-list>
-    <cart-bottom-bar/>
+    <cart-bottom-bar class="bottomBar ignore"/>
   </div>
 </template>
 
@@ -44,5 +44,10 @@ export default{
 }
 .shopCart{
   height: 100vh;
+  position: relative;
+}
+.bottomBar{
+  position: fixed;
+  bottom: 49px
 }
 </style>
