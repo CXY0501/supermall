@@ -45,5 +45,6 @@ export default{
 .active{
   color: var(--color-high-text);
   background-color: #fff;
+  box-shadow: 0 1px rgba(100,100,100,.1);
 }
 </style>
