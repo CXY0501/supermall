@@ -1,14 +1,22 @@
 <template>
   <div>
-    <h2>品类</h2>
+    <category-nav-bar/>
+    <category-menu/>
   </div>
 </template>
 
 <script>
+import CategoryNavBar from './categoryChild/categoryNavBar'
+import CategoryMenu from './categoryChild/categoryMenu'
+
 export default{
   name:'category',
   data(){
     return{}
+  },
+  components:{
+    CategoryNavBar,
+    CategoryMenu
   },
   methods:{
   }
