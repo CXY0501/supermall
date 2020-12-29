@@ -27,5 +27,6 @@ export default{
 .CategoryNavBar{
   background-color: var(--color-tint);
   color: #eee;
+  z-index: 999;
 }
 </style>

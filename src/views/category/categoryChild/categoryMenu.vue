@@ -44,7 +44,8 @@ export default{
 <style scoped>
 .CategoryMenu{
   height: calc(100% - 44px - 49px);
-  width: calc(100vw / 4)
+  width: calc(100vw / 4);
+  z-index: 9;
 }
 .menu{
   background-color: rgb(248, 242, 242);
