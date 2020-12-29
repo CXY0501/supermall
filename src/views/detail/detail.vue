@@ -96,6 +96,7 @@ export default{
     getRecommend().then((res, error) => {
           if (error) return
           this.recommendList = res.data.list
+          console.log(this.recommendList)
         })
   },
   mounted(){

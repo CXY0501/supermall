@@ -10,20 +10,34 @@
 </template>
 
 <script>
+
+import {getCategory} from '../../../network/category'
+
 export default{
   name:'CategoryMenu',
   data(){
     return{
-      menu: ['正在流行','上衣','裤子','裙子','内衣','女鞋','男友','包包','运动','配饰','美妆','个护','家居'],
+      categoryList: [],
+      menu:[],
       currentIndex: 0
     }
-    
   },
   methods:{
     titleClick(index){
       this.currentIndex = index
     }
-  }
+  },
+  created(){
+    getCategory().then((res, error) => {
+          if (error) return
+          this.categoryList = res.data.category.list
+          for(let item in this.categoryList){
+            // console.log(this.categoryList[item])
+            this.menu.push(this.categoryList[item].title)
+          }
+          // console.log(this.categoryList)
+        })
+  },
 }
 </script>
 
