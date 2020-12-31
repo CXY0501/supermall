@@ -2,7 +2,7 @@
   <div class="loginDetail">
     <div class="account distance">账号登录</div>
     <input type="text" class="input distance" placeholder="邮箱/手机号">
-    <input type="text" class="input distance" placeholder="密码">
+    <input type="password" class="input distance" placeholder="密码">
     <div class="findpw">找回密码？</div>
     <button class="distance">登录</button>
     <div class="registernow">立即注册</div>
