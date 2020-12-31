@@ -1,10 +1,10 @@
 <template>
   <div class="loginDetail">
     <div class="account distance">账号登录</div>
-    <input type="text" class="input distance" placeholder="邮箱/手机号">
+    <input type="text" class="input distance" placeholder="邮箱/手机号" v-model="account">
     <input type="password" class="input distance" placeholder="密码">
     <div class="findpw">找回密码？</div>
-    <button class="distance">登录</button>
+    <button class="distance" @click="login">登录</button>
     <div class="registernow">立即注册</div>
     <div class="thirdparty">________第三方登录________</div>
     <div class="social">
@@ -19,9 +19,15 @@
 export default{
   name:'LoginDetail',
   data(){
-    return{}
+    return{
+      account:''
+    }
   },
   methods:{
+    login(){
+      console.log(this.account)
+      this.$emit('account',this.account)
+    }
   }
 }
 </script>
@@ -73,6 +79,7 @@ button{
   margin-top: 50px;
   text-align: center;
   color: gray;
+  font-size: 14px;
 }
 span img{
   height: 50px;
