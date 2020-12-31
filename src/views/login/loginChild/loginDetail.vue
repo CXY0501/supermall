@@ -25,7 +25,7 @@ export default{
   },
   methods:{
     login(){
-      console.log(this.account)
+      console.log('child'+this.account)
       this.$emit('account',this.account)
     }
   }

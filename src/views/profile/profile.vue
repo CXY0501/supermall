@@ -17,7 +17,9 @@ import Profile4thBar from './profileChild/Profile4thBar.vue'
 export default{
   name:'profile',
   data(){
-    return{}
+    return{
+      Account:''
+    }
   },
   components:{
     ProfileTopBar,
