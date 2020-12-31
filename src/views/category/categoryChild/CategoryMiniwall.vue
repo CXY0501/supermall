@@ -128,7 +128,7 @@ export default{
   height: 80px;
   line-height: 80px;
   text-align: center;
-  vertical-align: bottom;
+  vertical-align: top;
   list-style: none;
   font-size: 10px;
   /* padding: 40px; */

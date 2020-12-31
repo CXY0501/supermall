@@ -6,13 +6,13 @@
         <img src="../../../assets/img/profile/account.png" alt="">
       </div>
       <div class="middle">
-        <div>登录/注册</div>
+        <div @click="Login">登录/注册</div>
         <div class="mobile">
           <img src="../../../assets/img/profile/mobile.png" alt="">
           暂无绑定手机号
         </div>
       </div>
-        <div class="rightArrow right">
+        <div class="rightArrow right" @click="Login">
           <img src="../../../assets/img/profile/rightArrow.png" alt="">
       </div>
     </div>
@@ -28,6 +28,10 @@ export default{
     return{}
   },
   methods:{
+    Login(){
+      // console.log('我要注册')
+      this.$router.replace('/login')
+    }
   }
 }
 </script>
