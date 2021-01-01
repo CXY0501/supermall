@@ -31,10 +31,20 @@ export default{
     return{
       balance: '0.00',
       promotion: 0,
-      points: 0
+      points: 0,
+      Account: ''
     }
   },
   methods:{
+  },
+  mounted(){
+    this.$bus.$on('account',(data)=>{
+      // console.log(data)
+      this.Account = data
+      this.balance = '1588.28'
+      this.promotion = 2
+      this.points = 288
+    })
   }
 }
 </script>
