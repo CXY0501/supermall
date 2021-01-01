@@ -8,8 +8,7 @@
         登录
       </div>
     </nav-bar>
-    <login-detail @account="myAccount"/>
-    <div>{{Account}}</div>
+    <login-detail/>
   </div>
 </template>
 
@@ -35,10 +34,10 @@ export default{
       // console.log('关闭登录页面')
       this.$router.replace('./profile')
     },
-    myAccount(account){
-      this.Account = account
-      console.log('father'+account)
-    }
+    // myAccount(account){
+    //   this.Account = account
+    //   console.log('father'+account)
+    // }
   }
 }
 </script>

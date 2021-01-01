@@ -25,8 +25,11 @@ export default{
   },
   methods:{
     login(){
-      console.log('child'+this.account)
-      this.$emit('account',this.account)
+      // console.log('login account'+this.account)
+      this.$bus.$emit('account',this.account)
+      this.$router.push({
+       path:'/profile'
+      })
     }
   }
 }

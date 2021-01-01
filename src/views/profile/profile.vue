@@ -28,7 +28,7 @@ export default{
     Profile4thBar
   },
   methods:{
-  }
+  },
 }
 </script>
 

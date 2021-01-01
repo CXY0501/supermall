@@ -6,10 +6,10 @@
         <img src="../../../assets/img/profile/account.png" alt="">
       </div>
       <div class="middle">
-        <div @click="Login">登录/注册</div>
+        <div @click="Login">{{Action}}</div>
         <div class="mobile">
           <img src="../../../assets/img/profile/mobile.png" alt="">
-          暂无绑定手机号
+          {{Account}}
         </div>
       </div>
         <div class="rightArrow right" @click="Login">
@@ -25,13 +25,23 @@
 export default{
   name:'ProfileTopBar',
   data(){
-    return{}
+    return{
+      Action:'登录/注册',
+      Account: '暂无绑定手机号'
+    }
   },
   methods:{
     Login(){
       // console.log('我要注册')
       this.$router.replace('/login')
     }
+  },
+  mounted(){
+    this.$bus.$on('account',(data)=>{
+      // console.log(data)
+      this.Account = data
+      this.Action = '欢迎您'
+    })
   }
 }
 </script>
