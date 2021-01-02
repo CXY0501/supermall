@@ -5,7 +5,7 @@
     <input type="password" class="input distance" placeholder="密码">
     <div class="findpw">找回密码？</div>
     <button class="distance" @click="login">登录</button>
-    <div class="registernow">立即注册</div>
+    <div class="registernow" @click="register">立即注册</div>
     <div class="thirdparty">________第三方登录________</div>
     <div class="social">
       <span><img src="../../../assets/img/login/wechat.png" alt=""></span>
@@ -30,6 +30,9 @@ export default{
       this.$router.push({
        path:'/profile'
       })
+    },
+    register(){
+      this.$router.replace('/register')
     }
   }
 }

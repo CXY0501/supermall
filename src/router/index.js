@@ -8,6 +8,7 @@ const ShopCart = () => import ('../views/shopcart/shopcart')
 const Profile = () => import ('../views/profile/profile') 
 const Detail = () => import ('../views/detail/detail') 
 const Login = () => import ('../views/login/login')
+const Register = () => import ('../views/register/register')
 
 const routes =[
         {
@@ -37,7 +38,12 @@ const routes =[
         {
             path:'/login',
             component: Login
+        },
+        {
+            path:'/register',
+            component: Register
         }
+
 ]
 
 const router=new VueRouter({
