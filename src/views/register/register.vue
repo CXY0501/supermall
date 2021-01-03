@@ -12,16 +12,20 @@
       </div>
       <div class="inputInfo">
         <span>设置密码</span>
-        <input type="text" placeholder="建议至少使用两种字符组合">
+        <input type="password" placeholder="建议至少使用两种字符组合">
       </div>
       <div class="inputInfo">
         <span>确认密码</span>
-        <input type="text" placeholder="再次确认密码">
+        <input type="password" placeholder="再次确认密码">
       </div>
       <div class="inputInfo">
-        <span>中国</span>
-        <input type="text" placeholder="建议使用常用手机">
+        <div class="mobile">
+          <span>中国</span>
+          <input type="text" placeholder="建议使用常用手机"> 
+        </div>
+        <button class="send">发送</button>
       </div>
+      
       <div class="inputInfo">
         <span>验证码</span>
         <input type="text" placeholder="请输入验证码">
@@ -62,6 +66,8 @@ export default{
   border: 1px #e1e1e1 solid;
   height: 40px;
   line-height: 40px;
+  font-size:14px;
+  margin-top: 30px;
 }
 .inputInfo span{
   display: inline-block;
@@ -70,7 +76,16 @@ export default{
 }
 .inputInfo input{
   height: 36px;
+  width: 170px;
   border: none;
+  outline: none;
+}
+.mobile{
+  display: inline-block;
+  width: 225px;
+}
+.mobile input{
+  width: 120px;
 }
 button{
   width: 273px;
@@ -78,8 +93,19 @@ button{
   background-color: var(--color-tint);
   color: #fff;
   border: none;
+  margin-top: 30px;
 }
 .terms{
-  font-size:13px
+  font-size:13px;
+  margin-top: 10px;
+}
+.send{
+  width: 45px;
+  height: 30px;
+  background-color: var(--color-tint);
+  color: #fff;
+  border: none;
+  margin-top: 0;
+  padding-bottom: 2px;
 }
 </style>
