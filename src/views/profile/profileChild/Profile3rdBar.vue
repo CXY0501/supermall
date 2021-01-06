@@ -4,7 +4,7 @@
       <span>
         <img src="../../../assets/img/profile/message.png" alt="">
       </span>
-      <span>我的消息</span>
+      <span @click="message">我的消息</span>
     </div>
     <div class="ThirdBarTable points">
       <span>
