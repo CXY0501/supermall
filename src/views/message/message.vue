@@ -1,14 +1,14 @@
 <template>
   <div class="message">
-    <nav-bar>
+    <nav-bar class="top">
       <div slot="left" class="title">
           消息
       </div>
-      <div slot="center" class="title">
-          通讯录
+      <div slot="center" class="topcenter">
+            <img src="../../assets/img/message/contact.png" alt="">
       </div>
-      <div slot="right" class="title">
-          添加
+      <div slot="right" class="topright">
+            <img src="../../assets/img/message/add.png" alt="">
       </div>
     </nav-bar>
   </div>
@@ -26,12 +26,27 @@ export default{
     NavBar
   },
   methods:{
-    message(){
-      this.$router.replace('./message')
-    }
   }
 }
 </script>
 
 <style scoped>
+.top{
+  background-color: var(--color-tint);
+  color: #ffffff;
+  font-size: 25px;
+  font-weight: bold;
+}
+.center img{
+  width: 38px;
+  height: 38px;
+  float:right;
+  text-align: center;
+  margin-top:3px;
+}
+.right img{
+  width: 26px;
+  height: 26px;
+  margin-top: 10px;
+}
 </style>

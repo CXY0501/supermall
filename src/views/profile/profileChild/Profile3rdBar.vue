@@ -1,10 +1,10 @@
 <template>
   <div class="ThirdBar">
-    <div class="ThirdBarTable">
+    <div class="ThirdBarTable" @click="message">
       <span>
         <img src="../../../assets/img/profile/message.png" alt="">
       </span>
-      <span @click="message">我的消息</span>
+      <span>我的消息</span>
     </div>
     <div class="ThirdBarTable points">
       <span>
@@ -28,6 +28,9 @@ export default{
     return{}
   },
   methods:{
+    message(){
+      this.$router.replace('./message')
+    }
   }
 }
 </script>
