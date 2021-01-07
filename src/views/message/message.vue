@@ -11,18 +11,26 @@
             <img src="../../assets/img/message/add.png" alt="">
       </div>
     </nav-bar>
-    <div class="noread">你有1300条未读消息</div>
-    <nav-bar class="middle">
-      <div slot="left" class="logistic">
-          <div>交易物流</div>
+    <div class="noread">
+      你有1300条未读消息
+    <div class="middle">
+      <div class="middlecontent">
+        <div class="logistic">
+            <div><img src="../../assets/img/message/logistic.png" alt=""></div>
+            <div>交易物流</div>
+        </div>
+        <div class="notification">
+            <div><img src="../../assets/img/message/notification.png" alt=""></div>
+            <div>通知消息</div>
+        </div>
+        <div class="interaction">
+            <div><img src="../../assets/img/message/interaction.png" alt=""></div>
+            <div>互动消息</div>
+        </div>
       </div>
-      <div slot="center" class="notification">
-          <div>通知消息</div>
-      </div>
-      <div slot="right" class="interaction">
-          <div>互动消息</div>
-      </div>
-    </nav-bar>
+    </div>
+    </div>
+    
   </div>
 </template>
 
@@ -69,5 +77,31 @@ export default{
   color: #ffffff;
   padding-left: 8px;
   padding-top: 20px;
+}
+.middle{
+  align-content: center;
+  width: 100vw;
+  height: 100px;
+  position: relative;
+  margin-top: 20px;
+}
+.middlecontent{
+  position: absolute;
+  width: calc(100vw * 0.9);
+  left: 50%;
+  margin-left: calc(-100vw * 0.9 / 2);
+  text-align: center;
+  border-radius:5%;
+  background-color: #fff;
+  color: gray;
+  padding: 10px;
+}
+.logistic, .interaction, .notification{
+  display: inline-block;
+  width: calc(100vw * 0.9 * 0.3)
+}
+.middlecontent img{
+  width: 50px;
+  height: 50px;
 }
 </style>
