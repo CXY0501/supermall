@@ -73,7 +73,7 @@ export default{
 }
 .noread{
   background-color: var(--color-tint);
-  height: 150px;
+  height: 130px;
   color: #ffffff;
   padding-left: 8px;
   padding-top: 20px;
@@ -83,7 +83,8 @@ export default{
   width: 100vw;
   height: 100px;
   position: relative;
-  margin-top: 20px;
+  margin-top: 40px;
+  
 }
 .middlecontent{
   position: absolute;
@@ -91,10 +92,11 @@ export default{
   left: 50%;
   margin-left: calc(-100vw * 0.9 / 2);
   text-align: center;
-  border-radius:5%;
+  border-radius:15px;
   background-color: #fff;
   color: gray;
   padding: 10px;
+  box-shadow: 0 1px 5px gray;
 }
 .logistic, .interaction, .notification{
   display: inline-block;
