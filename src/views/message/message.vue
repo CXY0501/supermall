@@ -11,31 +11,14 @@
             <img src="../../assets/img/message/add.png" alt="">
       </div>
     </nav-bar>
-    <div class="noread">
-      你有1300条未读消息
-    <div class="middle">
-      <div class="middlecontent">
-        <div class="logistic">
-            <div><img src="../../assets/img/message/logistic.png" alt=""></div>
-            <div>交易物流</div>
-        </div>
-        <div class="notification">
-            <div><img src="../../assets/img/message/notification.png" alt=""></div>
-            <div>通知消息</div>
-        </div>
-        <div class="interaction">
-            <div><img src="../../assets/img/message/interaction.png" alt=""></div>
-            <div>互动消息</div>
-        </div>
-      </div>
-    </div>
-    </div>
+    <mid-bar></mid-bar>
     
   </div>
 </template>
 
 <script>
 import NavBar from '../../components/common/navbar/NavBar'
+import midBar from './messagechild/middleBar'
 
 export default{
   name:'message',
@@ -43,7 +26,8 @@ export default{
     return{}
   },
   components:{
-    NavBar
+    NavBar,
+    midBar
   },
   methods:{
   }
@@ -75,6 +59,7 @@ export default{
   background-color: var(--color-tint);
   height: 130px;
   color: #ffffff;
+  width: 100vw;
   padding-left: 8px;
   padding-top: 20px;
 }
