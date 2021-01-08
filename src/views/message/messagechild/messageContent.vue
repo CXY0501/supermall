@@ -24,6 +24,18 @@
           <div class="number">1</div>
         </div>
       </nav-bar>
+      <nav-bar class="bar">
+        <div slot="left" class="logo">
+          <img src="../../../assets/img/message/parcel.png" alt="">
+        </div>
+        <div slot="center" class="content">
+          <div class="main">xx物流</div>
+          <div class="detail">包裹已发出，查看送达时间</div>
+        </div>
+        <div slot="right" class="reminder">
+          <div class="number">1</div>
+        </div>
+      </nav-bar>
   </div>
 </template>
 
@@ -52,12 +64,13 @@ export default{
   height: 30px;
 }
 .number{
-  height: 35px;
-  width: 35px;
+  height: 25px;
+  width: 25px;
   background-color: var(--color-high-text);
-  border-radius:50px;
+  border-radius:20px;
   color: #fff;
   font-size: 18px;
+  line-height: 25px;
 }
 .center div{
   text-align: left;
