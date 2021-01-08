@@ -12,13 +12,19 @@
       </div>
     </nav-bar>
     <mid-bar></mid-bar>
-    
+    <scroll class="msgcontent" 
+            ref="bscroll"
+            :probe-type="3">
+      <message-content></message-content>
+    </scroll>
   </div>
 </template>
 
 <script>
 import NavBar from '../../components/common/navbar/NavBar'
 import midBar from './messagechild/middleBar'
+import scroll from '../../components/common/scroll/scroll'
+import MessageContent from './messagechild/messageContent'
 
 export default{
   name:'message',
@@ -27,7 +33,9 @@ export default{
   },
   components:{
     NavBar,
-    midBar
+    midBar,
+    scroll,
+    MessageContent
   },
   methods:{
   }
@@ -55,40 +63,9 @@ export default{
   height: 26px;
   margin-top: 10px;
 }
-.noread{
-  background-color: var(--color-tint);
-  height: 130px;
-  color: #ffffff;
-  width: 100vw;
-  padding-left: 8px;
-  padding-top: 20px;
-}
-.middle{
-  align-content: center;
-  width: 100vw;
-  height: 100px;
-  position: relative;
-  margin-top: 40px;
-  
-}
-.middlecontent{
-  position: absolute;
-  width: calc(100vw * 0.9);
-  left: 50%;
-  margin-left: calc(-100vw * 0.9 / 2);
-  text-align: center;
-  border-radius:15px;
-  background-color: #fff;
-  color: gray;
-  padding: 10px;
-  box-shadow: 0 1px 5px gray;
-}
-.logistic, .interaction, .notification{
-  display: inline-block;
-  width: calc(100vw * 0.9 * 0.3)
-}
-.middlecontent img{
-  width: 50px;
-  height: 50px;
+.msgcontent{
+  margin-top: 50px;
+  height: calc(100vh - 44px - 140px - 40px);
+  overflow: hidden;
 }
 </style>
