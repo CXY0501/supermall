@@ -12,7 +12,7 @@
       </span>
       <span>积分商城</span>
     </div>
-    <div class="ThirdBarTable">
+    <div class="ThirdBarTable" @click="membership">
       <span>
         <img src="../../../assets/img/profile/member.png" alt="">
       </span>
@@ -30,6 +30,9 @@ export default{
   methods:{
     message(){
       this.$router.replace('./message')
+    },
+    membership(){
+      this.$router.replace('./membership')
     }
   }
 }

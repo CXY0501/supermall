@@ -10,6 +10,7 @@ const Detail = () => import ('../views/detail/detail')
 const Login = () => import ('../views/login/login')
 const Register = () => import ('../views/register/register')
 const Message = () => import ('../views/message/message')
+const Membership = () => import ('../views/membership/membership')
 
 const routes =[
         {
@@ -47,6 +48,10 @@ const routes =[
         {
             path:'/message',
             component: Message
+        },
+        {
+            path:'/membership',
+            component: Membership
         }
 
 ]
