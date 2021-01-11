@@ -43,6 +43,7 @@ export default{
   height: 200px;
   width: calc(100vw * 0.8);
   background-color: var(--color-tint);
+  background-image: url('../../assets/img/message/gold.jpeg');
   border-radius: 20px;
   color:#fff;
   text-align: center;
