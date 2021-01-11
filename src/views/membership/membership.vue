@@ -7,7 +7,9 @@
     </nav-bar>
     <div class="card">
       <div class="cardcontent">
-        会员卡 - 普通会员
+        <div class="header">会员卡</div>
+        <div class="tier">普通会员</div>
+        <div>13822120994</div>
       </div>
     </div>
   </div>
@@ -44,5 +46,14 @@ export default{
   border-radius: 20px;
   color:#fff;
   text-align: center;
+  box-shadow: 0 1px 5px gray;
+}
+.header{
+  padding-top: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+.tier{
+  font-size: 14px;
 }
 </style>
