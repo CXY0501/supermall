@@ -21,6 +21,7 @@ import CategoryNavBar from './categoryChild/categoryNavBar'
 import CategoryMenu from './categoryChild/categoryMenu'
 import CategoryMiniwall from './categoryChild/CategoryMiniwall'
 import scroll from '../../components/common/scroll/scroll'
+import {getCategory,getSubcategory,getCategoryDetail} from '../../network/category'
 
 export default{
   name:'category',
@@ -32,7 +33,8 @@ export default{
     CategoryNavBar,
     CategoryMenu,
     CategoryMiniwall,
-    scroll
+    scroll,
+    
   },
   methods:{
   }

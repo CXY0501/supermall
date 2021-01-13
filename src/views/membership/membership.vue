@@ -9,7 +9,7 @@
       <div class="cardcontent">
         <div class="header">会员卡</div>
         <div class="tier">普通会员</div>
-        <div>13822120994</div>
+        <div class="number">13822120994</div>
       </div>
     </div>
   </div>
@@ -56,5 +56,8 @@ export default{
 }
 .tier{
   font-size: 14px;
+}
+.header,.tier,.number{
+  margin-bottom: 10px;
 }
 </style>
